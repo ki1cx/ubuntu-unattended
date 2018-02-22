@@ -267,6 +267,18 @@ echo " your hostname is: $hostname"
 echo " your timezone is: $timezone"
 echo
 
+
+
+read -p "Write to device on sdb?" -n 1 -r
+echo ""
+
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    dd if=$tmp/$new_iso_name of=/dev/sdb bs=4M && sync
+fi
+
+
+
 # unset vars
 unset username
 unset password
