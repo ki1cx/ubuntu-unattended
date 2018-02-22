@@ -43,6 +43,9 @@ sed -i "/PermitRootLogin yes/c\PermitRootLogin no" /etc/ssh/sshd_config
 sed -i "/PasswordAuthentication yes/c\PasswordAuthentication no" /etc/ssh/sshd_config
 service sshd restart
 
+cd /var/lib
+git clone https://github.com/ki1cx/ubuntu-unattended.git
+
 ## remove myself to prevent any unintended changes at a later stage
 #rm $0
 #
