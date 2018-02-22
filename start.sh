@@ -4,7 +4,6 @@ set -e
 # set defaults
 hostname=ubuntu
 domain=ubuntu
-tmp="/root/"
 
 clear
 
@@ -40,7 +39,6 @@ apt-get -y purge
 apt-get -y install openssh-server
 sed -i "/Port /c\Port 131" /etc/ssh/sshd_config
 sed -i "/PermitRootLogin yes/c\PermitRootLogin no" /etc/ssh/sshd_config
-sed -i "/PasswordAuthentication yes/c\PasswordAuthentication no" /etc/ssh/sshd_config
 service sshd restart
 
 cd /var/lib
