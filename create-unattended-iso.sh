@@ -4,6 +4,7 @@
 tmp="$HOME"  # destination folder to store the final iso file
 hostname="ubuntu"
 currentuser="$( whoami)"
+projectDir=$(pwd)
 
 # define spinner function for slow tasks
 # courtesy of http://fitnr.com/showing-a-bash-spinner.html
@@ -144,12 +145,19 @@ if [[ ! -f $tmp/$download_file ]]; then
 	exit 1
 fi
 
-# download ubuntu seed file
+
 seed_file="ubuntu.seed"
+## copy seed file
 if [[ ! -f $tmp/$seed_file ]]; then
-    echo -n " downloading $seed_file: "
-    download "https://raw.githubusercontent.com/ki1cx/ubuntu-unattended/master/$seed_file"
+    cp $projectDir/$seed_file $tmp/$seed_file
 fi
+
+## download ubuntu seed file
+#seed_file="ubuntu.seed"
+#if [[ ! -f $tmp/$seed_file ]]; then
+#    echo -n " downloading $seed_file: "
+#    download "https://raw.githubusercontent.com/ki1cx/ubuntu-unattended/master/$seed_file"
+#fi
 
 # install required packages
 echo " installing required packages"
