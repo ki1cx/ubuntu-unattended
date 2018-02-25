@@ -7,12 +7,12 @@ domain=ubuntu
 
 clear
 
-# check for root privilege
-if [ "$(id -u)" != "0" ]; then
-   echo " this script must be run as root" 1>&2
-   echo
-   exit 1
-fi
+## check for root privilege
+#if [ "$(id -u)" != "0" ]; then
+#   echo " this script must be run as root" 1>&2
+#   echo
+#   exit 1
+#fi
 
 # determine ubuntu version
 ubuntu_version=$(lsb_release -cs)
@@ -29,12 +29,12 @@ sed -i "s@ubuntu.ubuntu@$fqdn@g" /etc/hosts
 sed -i "s@ubuntu@$hostname@g" /etc/hosts
 hostname "$hostname"
 
-# update repos
-apt-get -y update
-apt-get -y upgrade
-apt-get -y dist-upgrade
-apt-get -y autoremove
-apt-get -y purge
+## update repos
+#apt-get -y update
+#apt-get -y upgrade
+#apt-get -y dist-upgrade
+#apt-get -y autoremove
+#apt-get -y purge
 
 apt-get -y install openssh-server
 sed -i "/Port /c\Port 131" /etc/ssh/sshd_config
