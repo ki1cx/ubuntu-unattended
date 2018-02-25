@@ -31,6 +31,7 @@ download()
 {
     local url=$1
     echo -n "    "
+    cd $tmp
     wget --progress=dot $url 2>&1 | grep --line-buffered "%" | \
         sed -u -e "s,\.,,g" | awk '{printf("\b\b\b\b%4s", $2)}'
     echo -ne "\b\b\b\b"
@@ -154,13 +155,6 @@ seed_file="ubuntu.seed"
 if [[ ! -f $tmp/$seed_file ]]; then
     cp $projectDir/$seed_file $tmp/$seed_file
 fi
-
-## download ubuntu seed file
-#seed_file="ubuntu.seed"
-#if [[ ! -f $tmp/$seed_file ]]; then
-#    echo -n " downloading $seed_file: "
-#    download "https://raw.githubusercontent.com/ki1cx/ubuntu-unattended/master/$seed_file"
-#fi
 
 # install required packages
 echo " installing required packages"
