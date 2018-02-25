@@ -116,6 +116,7 @@ fi
 
 # ask the user questions about his/her preferences
 read -ep " please enter your preferred timezone: " -i "${timezone}" timezone
+read -ep " please enter your preferred ssh port number: " -i "" ssh_port
 read -ep " please enter your preferred username: " -i "" username
 read -sp " please enter your preferred password: " password
 printf "\n"
@@ -213,11 +214,11 @@ sed -i -r 's/timeout\s+[0-9]+/timeout 1/g' $tmp/iso_new/isolinux/isolinux.cfg
 if [[ $ub1604 == "yes" ]]; then
    late_command="apt-install wget; in-target wget --no-check-certificate -O /home/$username/late.sh https://github.com/ki1cx/ubuntu-unattended/raw/master/late.sh ;\
      in-target chmod +x /home/$username/late.sh ;\
-     in-target /home/$username/late.sh ;"
+     in-target /home/$username/late.sh $ssh_port ;"
 else 
    late_command="chroot /target wget -O /home/$username/late.sh https://github.com/ki1cx/ubuntu-unattended/raw/master/late.sh ;\
      chroot /target chmod +x /home/$username/late.sh ;\
-     chroot /target /home/$username/late.sh ;"
+     chroot /target /home/$username/late.sh $ssh_port ;"
 fi
 
 
