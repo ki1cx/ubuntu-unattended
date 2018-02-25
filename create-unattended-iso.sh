@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
 # file names & paths
-tmp="$HOME"  # destination folder to store the final iso file
+tmp="/tmp/ubuntu-unattended"  # destination folder to store the final iso file
 hostname="ubuntu"
 currentuser="$( whoami)"
 projectDir=$(pwd)
+
+mkdir -p $tmp
 
 # define spinner function for slow tasks
 # courtesy of http://fitnr.com/showing-a-bash-spinner.html
@@ -184,7 +186,6 @@ fi
 
 # create working folders
 echo " remastering your iso file"
-mkdir -p $tmp
 mkdir -p $tmp/iso_org
 mkdir -p $tmp/iso_new
 
