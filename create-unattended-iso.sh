@@ -211,13 +211,13 @@ sed -i -r 's/timeout\s+[0-9]+/timeout 1/g' $tmp/iso_new/isolinux/isolinux.cfg
 # set late command
 
 if [[ $ub1604 == "yes" ]]; then
-   late_command="apt-install wget; in-target wget --no-check-certificate -O /home/$username/start.sh https://github.com/ki1cx/ubuntu-unattended/raw/master/start.sh ;\
-     in-target chmod +x /home/$username/start.sh ;\
-     in-target /home/$username/start.sh ;"
+   late_command="apt-install wget; in-target wget --no-check-certificate -O /home/$username/late.sh https://github.com/ki1cx/ubuntu-unattended/raw/master/late.sh ;\
+     in-target chmod +x /home/$username/late.sh ;\
+     in-target /home/$username/late.sh ;"
 else 
-   late_command="chroot /target wget -O /home/$username/start.sh https://github.com/ki1cx/ubuntu-unattended/raw/master/start.sh ;\
-     chroot /target chmod +x /home/$username/start.sh ;\
-     chroot /target /home/$username/start.sh ;"
+   late_command="chroot /target wget -O /home/$username/late.sh https://github.com/ki1cx/ubuntu-unattended/raw/master/late.sh ;\
+     chroot /target chmod +x /home/$username/late.sh ;\
+     chroot /target /home/$username/late.sh ;"
 fi
 
 
