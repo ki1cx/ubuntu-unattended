@@ -84,10 +84,6 @@ $ sudo ./create-unattended-iso.sh
 
 * Sit back and relax, while the script does the rest! :)
 
-## What it does
-
-This script does a bunch of stuff, here's the quick walk-through:
-
 ## License
 MIT
 
